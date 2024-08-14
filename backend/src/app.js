@@ -17,11 +17,15 @@ app.use(cookieParser())
 
 // routes import 
 import userRouter from "./routes/user.route.js"
+import favoriteRouter from './routes/favorite.route.js';
+import movieRouter from './routes/movie.route.js';
 
 
 
 
 //routes declaration
 app.use("/users", userRouter)
+app.use('/favorites', favoriteRouter);
+app.use('/movies', movieRouter);
 
 export { app }

@@ -31,7 +31,15 @@ const userSchema = new Schema(
         },
         refreshToken: {
             type: String
-        }
+        },
+        favorites: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Movie',
+        }],
+        createdAt: {
+            type: Date,
+            default: Date.now,
+        },
 
     },
     {

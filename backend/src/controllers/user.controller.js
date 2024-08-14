@@ -32,7 +32,7 @@ const registerUser = asyncHandler(async(req,res) => {
     // remove password and refresh token field from response
     // check for user creation
     // return res
-
+    
    
     const {fullName, email, username, password } = req.body
 
@@ -80,7 +80,7 @@ const loginUser = asyncHandler(async (req, res) =>{
     //password check
     //access and referesh token
     //send cookie
-    console.log(req.body); // Add this line to debug
+    
     const {email, username, password} = req.body
     
 
