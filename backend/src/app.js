@@ -19,7 +19,7 @@ app.use(cookieParser())
 import userRouter from "./routes/user.route.js"
 import favoriteRouter from './routes/favorite.route.js';
 import movieRouter from './routes/movie.route.js';
-
+import reviewRoutes from './routes/review.route.js';
 
 
 
@@ -27,5 +27,6 @@ import movieRouter from './routes/movie.route.js';
 app.use("/users", userRouter)
 app.use('/favorites', favoriteRouter);
 app.use('/movies', movieRouter);
+app.use('/reviews', reviewRoutes);
 
 export { app }
