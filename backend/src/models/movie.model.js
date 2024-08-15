@@ -1,18 +1,22 @@
 import mongoose from 'mongoose';
 
 const movieSchema = new mongoose.Schema({
+    tmdbId: { 
+        type: String, 
+        required: true, 
+        unique: true 
+    },
     title: {
         type: String,
         required: true,
         trim: true,
     },
-    genre: {
+    genres: {
         type: [String], // Array of genres
         required: true,
     },
     director: {
         type: String,
-        required: true,
         trim: true,
     },
     releaseDate: {
@@ -23,15 +27,15 @@ const movieSchema = new mongoose.Schema({
         type: Number, // runtime in minutes
         required: true,
     },
-    description: {
+    overview: { // description
         type: String,
         required: true,
         trim: true,
     },
-    coverImage: {
-        type: String, // URL to the cover image
+    posterPath: { // URL to the cover image
+        type: String,
     },
-    ottAvailability: [{
+    ottProviders: [{ // Renamed from ottAvailability for consistency
         platform: String,
         url: String
     }],

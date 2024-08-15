@@ -6,7 +6,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 
 const tmdbApiKey = process.env.TMDB_API_KEY;
-console.log("API key:", tmdbApiKey)
+// console.log("API key:", tmdbApiKey)
 // console.log(process.env)
 
 // Search for movies by query
