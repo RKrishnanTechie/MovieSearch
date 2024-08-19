@@ -6,7 +6,7 @@ const app = express()
 
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
-    credentials: true,
+    credentials: true,// This allows the server to accept cookies from the frontend
 }))
 
 app.use((req, res, next) => {
