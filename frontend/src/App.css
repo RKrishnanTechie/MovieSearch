@@ -59,3 +59,68 @@
   font-size: 16px;
   font-weight: bold;
 }
+
+.movie-details {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.movie-details img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.movie-details .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-details h1 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #333;
+}
+
+.movie-details p {
+  margin: 10px 0;
+  color: #666;
+}
+
+.movie-details a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.movie-details a:hover {
+  text-decoration: underline;
+}
+
+.movie-details .details-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.movie-details .info-container {
+  flex: 1;
+}
+
+.movie-details .ott-providers {
+  margin-top: 20px;
+}
+
+.movie-details .ott-providers a {
+  display: inline-block;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+.movie-details .ott-providers a:hover {
+  text-decoration: underline;
+}

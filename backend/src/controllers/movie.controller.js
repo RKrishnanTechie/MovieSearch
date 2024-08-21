@@ -4,17 +4,12 @@ import axios from 'axios';
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
+import { Movie } from '../models/movie.model.js';
 
 const tmdbApiKey = process.env.TMDB_API_KEY;
-// console.log("API key:", tmdbApiKey)
-// console.log(process.env)
 
-// Search for movies by query
 const searchMovies = asyncHandler(async (req, res) => {
-    console.log("TMDB API Key being used:", tmdbApiKey);
     const { query } = req.query;
-
-   
 
     if (!query) {
         throw new ApiError(400, "Search query is required");
@@ -35,6 +30,53 @@ const searchMovies = asyncHandler(async (req, res) => {
     return res.status(200).json(new ApiResponse(200, response.data.results, "Movies fetched successfully"));
 });
 
+// Helper function to fetch movie details and director from TMDB
+const fetchMovieDetails = async (movieId) => {
+    const movieUrl = `https://api.themoviedb.org/3/movie/${movieId}`;
+    const providersUrl = `https://api.themoviedb.org/3/movie/${movieId}/watch/providers`;
+
+    // Append credits to the movie details request
+    const [movieResponse, providersResponse] = await Promise.all([
+        axios.get(movieUrl, {
+            params: {
+                api_key: tmdbApiKey,
+                append_to_response: 'credits' // Appends credits to the movie details
+            }
+        }),
+        axios.get(providersUrl, { params: { api_key: tmdbApiKey } })
+    ]);
+
+    if (!movieResponse.data) {
+        throw new ApiError(404, "Movie not found");
+    }
+
+    const movieDetails = movieResponse.data;
+    const watchProviders = providersResponse.data.results;
+
+    // Extract the director's name from the appended credits
+    const director = movieDetails.credits.crew.find(person => person.job === 'Director')?.name || 'Unknown';
+
+    // Extract OTT providers, for example from the UK region
+    const ottProviders = watchProviders?.GB?.flatrate?.map(provider => ({
+        platform: provider.provider_name,
+        url: `https://www.themoviedb.org/movie/${movieId}/watch`
+    })) || [];
+
+    
+
+    return {
+        tmdbId: movieDetails.id,
+        title: movieDetails.title,
+        overview: movieDetails.overview,
+        posterPath: movieDetails.poster_path,
+        releaseDate: movieDetails.release_date,
+        genres: movieDetails.genres.map(genre => genre.name),
+        runtime: movieDetails.runtime,
+        director: director, // Store the director's name
+        ottProviders: ottProviders, // Store OTT providers data
+    };
+};
+
 // Get movie details along with OTT availability
 const getMovieDetails = asyncHandler(async (req, res) => {
     const { id } = req.params;
@@ -43,34 +85,22 @@ const getMovieDetails = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Movie ID is required");
     }
 
-    // Fetch movie details
-    const movieUrl = `https://api.themoviedb.org/3/movie/${id}`;
-    const movieResponse = await axios.get(movieUrl, {
-        params: {
-            api_key: tmdbApiKey,
-        },
-    });
+    // Check if the movie is already in the database
+    let movie = await Movie.findOne({ tmdbId: id });
 
-    if (!movieResponse.data) {
-        throw new ApiError(404, "Movie not found");
+    if (!movie) {
+        // Movie not found in the database, fetch it from TMDB API
+        const movieDetails = await fetchMovieDetails(id);
+
+        // Save the fetched movie details to the database
+        movie = new Movie(movieDetails);
+        await movie.save();
     }
-
-    // Fetch OTT availability
-    const providersUrl = `https://api.themoviedb.org/3/movie/${id}/watch/providers`;
-    const providersResponse = await axios.get(providersUrl, {
-        params: {
-            api_key: tmdbApiKey,
-        },
-    });
-
-    const movieDetails = movieResponse.data;
-    const watchProviders = providersResponse.data.results;
-
-    return res.status(200).json(new ApiResponse(200, {
-        ...movieDetails,
-        watchProviders: watchProviders.UK, // we want UK providers, adjust region as needed
-    }, "Movie details fetched successfully"));
+ 
+    console.log(" movie with OTT", movie)
+    return res.status(200).json(new ApiResponse(200, movie, "Movie details fetched successfully"));
 });
+
 
 export {
     searchMovies,
