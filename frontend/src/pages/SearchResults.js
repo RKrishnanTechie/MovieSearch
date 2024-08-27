@@ -38,7 +38,7 @@ const SearchResults = () => {
 
   return (
     <div>
-      <h1>Search Results</h1>
+      <h1 className="search-results-heading">Search Results</h1>
       {loading ? (
         <p>Loading...</p>
       ) : error ? (

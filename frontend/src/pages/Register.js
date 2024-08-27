@@ -39,11 +39,11 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
+    <div className="register-container">
+      <form className="register-form" onSubmit={handleSubmit}>
+        <h1>Register</h1>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div className="mb-3">
           <label>Full Name:</label>
           <input
             type="text"
@@ -52,7 +52,7 @@ const Register = () => {
             required
           />
         </div>
-        <div>
+        <div className="mb-3">
           <label>Email:</label>
           <input
             type="email"
@@ -61,7 +61,7 @@ const Register = () => {
             required
           />
         </div>
-        <div>
+        <div className="mb-3">
           <label>Username:</label>
           <input
             type="text"
@@ -70,7 +70,7 @@ const Register = () => {
             required
           />
         </div>
-        <div>
+        <div className="mb-3">
           <label>Password:</label>
           <input
             type="password"
@@ -82,7 +82,8 @@ const Register = () => {
         <button type="submit">Register</button>
       </form>
     </div>
-  );
+);
+
 };
 
 export default Register;
