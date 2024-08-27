@@ -97,7 +97,7 @@ const getMovieDetails = asyncHandler(async (req, res) => {
         await movie.save();
     }
  
-    console.log(" movie with OTT", movie)
+    // console.log(" movie with OTT", movie)
     return res.status(200).json(new ApiResponse(200, movie, "Movie details fetched successfully"));
 });
 

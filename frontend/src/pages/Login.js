@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import AuthContext from '../context/authContext';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
   const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,9 +22,8 @@ const Login = () => {
       });
 
       if (response.status === 200) {
-        console.log(response.data); // Log the full response data
-        // Redirect to the home page
-        navigate('/');
+        authContext.login(response.data.token, response.data.user); // Use the context login function
+        navigate('/'); // Redirect to home
       }
     } catch (err) {
       console.error(err);

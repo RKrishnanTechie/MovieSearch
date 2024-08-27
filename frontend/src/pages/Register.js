@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import  AuthContext from '../context/authContext'; // Ensure the path is correct
 
 const Register = () => {
   const [fullName, setFullName] = useState('');
@@ -10,6 +11,7 @@ const Register = () => {
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +25,9 @@ const Register = () => {
       });
 
       if (response.status === 201) {
-        navigate('/login');
+        // Automatically log in the user after registration
+        login(response.data.token); // Assuming the backend returns a token upon registration
+        navigate('/'); // Redirect to the home page or wherever you want
       }
     } catch (err) {
         if (err.response?.status === 409) {

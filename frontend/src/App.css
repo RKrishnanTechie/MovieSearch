@@ -124,3 +124,17 @@
 .movie-details .ott-providers a:hover {
   text-decoration: underline;
 }
+
+.favorite-button {
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.favorite-button:hover {
+  background-color: #ff4500;
+}
