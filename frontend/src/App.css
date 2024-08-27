@@ -1,42 +1,31 @@
-.App {
-  text-align: center;
+/* Theme-specific styles */
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --link-color: #1a73e8;
+  --button-background: #1a73e8;
+  --button-text-color: #ffffff;
+  --border-color: #dddddd;
+  --card-background: #f8f9fa;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+[data-theme="dark"] {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --link-color: #8ab4f8;
+  --button-background: #333333;
+  --button-text-color: #ffffff;
+  --border-color: #333333;
+  --card-background: #1e1e1e;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
+/* Existing styles with theme integration */
 .movies-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -45,6 +34,15 @@
 
 .movie-card {
   text-align: center;
+  padding: 10px;
+  background-color: var(--card-background);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
 }
 
 .movie-card img {
@@ -64,9 +62,11 @@
   max-width: 900px;
   margin: 20px auto;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: var(--card-background);
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
 }
 
 .movie-details img {
@@ -84,16 +84,16 @@
 .movie-details h1 {
   margin-bottom: 20px;
   font-size: 2rem;
-  color: #333;
+  color: var(--text-color);
 }
 
 .movie-details p {
   margin: 10px 0;
-  color: #666;
+  color: var(--text-color);
 }
 
 .movie-details a {
-  color: #007bff;
+  color: var(--link-color);
   text-decoration: none;
 }
 
@@ -118,7 +118,7 @@
   display: inline-block;
   margin-right: 15px;
   margin-bottom: 10px;
-  color: #007bff;
+  color: var(--link-color);
 }
 
 .movie-details .ott-providers a:hover {
@@ -126,8 +126,8 @@
 }
 
 .favorite-button {
-  background-color: #ff6347;
-  color: white;
+  background-color: var(--button-background);
+  color: var(--button-text-color);
   border: none;
   padding: 10px 20px;
   margin-top: 20px;
@@ -136,5 +136,5 @@
 }
 
 .favorite-button:hover {
-  background-color: #ff4500;
+  background-color: var(--button-background);
 }
