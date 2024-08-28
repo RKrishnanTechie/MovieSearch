@@ -21,24 +21,28 @@ const Favorites = () => {
     }, []);
 
     return (
-        <div>
-            <h1>Your Favorites</h1>
-            {favorites.length > 0 ? (
-                <ul>
-                    {favorites.map((movie) => (
-                        <li key={movie._id}>
-                            <Link to={`/movies/${movie.tmdbId}`}>
-                                <img src={`https://image.tmdb.org/t/p/w200${movie.posterPath}`} alt={movie.title} />
-                                <p>{movie.title}</p>
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <p>You have no favorite movies yet.</p>
-            )}
+        <div className="favorites-container">
+          <h1 className="favorites-heading">My Favorites ❤</h1>
+          {favorites.length > 0 ? (
+            <div className="favorites-grid">
+              {favorites.map((movie) => (
+                <div key={movie._id} className="favorite-card">
+                  <Link to={`/movies/${movie.tmdbId}`}>
+                    <img
+                      src={`https://image.tmdb.org/t/p/w200${movie.posterPath}`}
+                      alt={movie.title}
+                    />
+                    <p>{movie.title}</p>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="no-favorites">You have no favorite movies yet.</p>
+          )}
         </div>
-    );
+      );
+      
 };
 
 export default Favorites;

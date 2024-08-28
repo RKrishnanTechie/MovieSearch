@@ -3,11 +3,11 @@ import React from 'react';
 const Home = () => { 
 
   return (
-    <div>
-      <h1>Home Page</h1>
-      <p>Welcome to the Movie Search App!</p>
-     
-    </div>
+    <div className="home-container">
+    <h1>Welcome to Movie Search</h1>
+    <p>Discover your favorite movies and find out where to watch them across all streaming platforms.</p>
+  </div>
+  
   );
 };
 

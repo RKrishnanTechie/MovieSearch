@@ -129,32 +129,55 @@ const ReviewsList = ({ movieId, reviews, onReviewAdded }) => {
 
     return (
         <div>
-            <h3>Reviews</h3>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <ul>
-                {localReviews.map((review) => (
-                    <li key={review._id}>
-                        <strong>{review.user?.username || 'Unknown User'}</strong>
-                        <p>{review.comment}</p>
-                        <small>Rating: {review.rating}/10</small>
-                        <div>
-                            <button onClick={() => handleLike(review._id)}>Like ({review.likes?.length || 0})</button>
-                            <button onClick={() => handleDislike(review._id)}>Dislike ({review.dislikes?.length || 0})</button>
-                            {isAuthenticated && user?._id === review.user?._id && (
-                                <>
-                                    <button onClick={() => handleEdit(review._id, prompt('Edit your comment:', review.comment), prompt('Edit your rating:', review.rating))}>Edit</button>
-                                    <button onClick={() => handleDelete(review._id)}>Delete</button>
-                                </>
-                            )}
-                        </div>
-                    </li>
-                ))}
-            </ul>
-            {page < totalPages && (
-                <button onClick={loadMoreReviews}>Load More</button>
-            )}
+          <h3>Reviews</h3>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          <ul>
+            {localReviews.map((review) => (
+              <li key={review._id} className="review-item">
+                <strong>{review.user?.username || 'Unknown User'}</strong>
+                <p>{review.comment}</p>
+                <small>Rating: {review.rating}/10</small>
+                <div className="review-actions">
+                  <button
+                    onClick={() => handleLike(review._id)}
+                    className="like-button"
+                  >
+                    <i className="fas fa-thumbs-up"></i> {review.likes?.length || 0}
+                  </button>
+                  <button
+                    onClick={() => handleDislike(review._id)}
+                    className="dislike-button"
+                  >
+                    <i className="fas fa-thumbs-down"></i>{' '}
+                    {review.dislikes?.length || 0}
+                  </button>
+                  {isAuthenticated && user?._id === review.user?._id && (
+                    <>
+                      <button
+                        onClick={() =>
+                          handleEdit(
+                            review._id,
+                            prompt('Edit your comment:', review.comment),
+                            prompt('Edit your rating:', review.rating)
+                          )
+                        }
+                      >
+                        Edit
+                      </button>
+                      <button onClick={() => handleDelete(review._id)}>Delete</button>
+                    </>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+          {page < totalPages && (
+            <button onClick={loadMoreReviews}>Load More</button>
+          )}
         </div>
-    );
+      );
+      
+    
 };
 
 export default ReviewsList;

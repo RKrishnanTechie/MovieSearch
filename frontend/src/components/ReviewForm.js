@@ -34,14 +34,15 @@ const ReviewForm = ({ movieId, onReviewAdded }) => {
     
 
     return (
-        <div>
-            <h3>Add a Review</h3>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div className="card p-4 my-4">
+            <h3 className="text-center">Write your Review</h3>
+            {error && <p className="text-danger text-center">{error}</p>}
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Rating:</label>
+                <div className="mb-3">
+                    <label className="form-label text-white">Rating:</label>
                     <input
                         type="number"
+                        className="form-control"
                         value={rating}
                         onChange={(e) => setRating(e.target.value)}
                         min="0"
@@ -49,18 +50,20 @@ const ReviewForm = ({ movieId, onReviewAdded }) => {
                         required
                     />
                 </div>
-                <div>
-                    <label>Comment:</label>
+                <div className="mb-3">
+                    <label className="form-label text-white">Comment:</label>
                     <textarea
+                        className="form-control"
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
                         required
                     ></textarea>
                 </div>
-                <button type="submit">Submit Review</button>
+                <button type="submit" className="btn btn-warning w-70">Post Review</button>
             </form>
         </div>
     );
+    
 };
 
 export default ReviewForm;

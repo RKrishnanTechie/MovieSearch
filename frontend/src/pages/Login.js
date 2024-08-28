@@ -33,7 +33,7 @@ const Login = () => {
 
   return (
     <div className="d-flex justify-content-center align-items-center min-vh-100">
-      <div className="card p-4 login-card shadow-lg" style={{ maxWidth: '600px' }}>
+      <div className="card p-4 login-card shadow-lg" style={{ minWidth: '400px' }}>
         <h2 className="text-center mb-4">Login</h2>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <form onSubmit={handleSubmit}>
