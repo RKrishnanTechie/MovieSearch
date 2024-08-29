@@ -24,6 +24,12 @@ const Navbar = () => {
     document.documentElement.setAttribute('data-theme', savedTheme);
   }, []);
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      setError(''); // Clear the error when the user logs in
+    }
+  }, [isAuthenticated]);
+
   const handleSearch = async (e, searchQuery) => {
     if (e) {
       e.preventDefault();
@@ -35,6 +41,8 @@ const Navbar = () => {
       setError('You need to be logged in to search for movies.');
       return;
     }
+
+    setError('');
 
     try {
       await axios.get(`http://localhost:8000/movies/search?query=${finalQuery}`, {

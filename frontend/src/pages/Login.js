@@ -22,6 +22,7 @@ const Login = () => {
       });
 
       if (response.status === 200) {
+        setError(''); // Clear any previous error message
         authContext.login(response.data.token, response.data.user); // Use the context login function
         navigate('/'); // Redirect to home
       }
