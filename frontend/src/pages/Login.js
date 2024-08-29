@@ -32,9 +32,15 @@ const Login = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center min-vh-100">
+    <div className="d-flex flex-column justify-content-center align-items-center min-vh-100">
+      {/* Headings */}
+      <div className="text-center mb-4">
+        <h2 className="fw-bold">Unlock a world of endless entertainment</h2>
+        <p className="lead">Login to Discover, Stream, and Enjoy!</p>
+      </div>
+      
+      {/* Login Card */}
       <div className="card p-4 login-card shadow-lg" style={{ minWidth: '400px' }}>
-        <h2 className="text-center mb-4">Login</h2>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="form-group mb-3">
@@ -62,7 +68,6 @@ const Login = () => {
       </div>
     </div>
   );
-  
   
   
   

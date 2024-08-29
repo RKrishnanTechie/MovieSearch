@@ -144,14 +144,14 @@ const Navbar = () => {
             <button className="btn btn-outline-success" type="submit">Search</button>
             <button
               type="button"
-              className={`btn btn-outline-danger ms-2 ${listening ? 'listening' : ''}`}  // Add a class when listening
+              className={`btn btn-outline-danger ms-2 ${listening ? 'listening' : ''}`}  
               onClick={startVoiceSearch}
-              style={{ color: listening ? 'red' : '' }} // Change color when listening
+              style={{ color: listening ? 'red' : '' }} 
             >
               <FontAwesomeIcon icon={faMicrophone} />
             </button>
           </form>
-          {listening && <p style={{ color: 'red', marginTop: '10px' }}>Listening...</p>}  {/* Show listening message */}
+          {listening && <p style={{ color: 'red', marginTop: '10px' }}>Listening...</p>}  
       {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
           <button onClick={toggleTheme} className="btn btn-outline-info ms-3">
             Toggle Theme

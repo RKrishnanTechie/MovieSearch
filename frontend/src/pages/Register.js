@@ -26,7 +26,7 @@ const Register = () => {
 
       if (response.status === 201) {
         // Automatically log in the user after registration
-        login(response.data.token); // Assuming the backend returns a token upon registration
+        login(response.data.token); //  the backend returns a token upon registration
         navigate('/'); // Redirect to the home page or wherever you want
       }
     } catch (err) {
