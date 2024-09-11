@@ -470,3 +470,32 @@ body {
   font-family: 'Arial', sans-serif;
   font-weight: 700;
 }
+
+
+.genre-filter-container {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.genre-filter-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: red; 
+}
+
+.genre-filter {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #333;
+  color: #fff;
+  width: 200px; 
+}
+
+.genre-filter:hover,
+.genre-filter:focus {
+  border-color: #ff3d00; 
+}
