@@ -25,10 +25,15 @@ A responsive and feature-rich movie discovery platform built using the MERN stac
 
 ## 📸 Screenshots
 
-| Home Page | Voice Search | Movie Results |
-|-----------|---------------|----------------|
-| ![Home](images/Home.PNG) | ![Genre](images/Genre.png) | ![Light Mode](images/Light%20Mode.PNG) |
-| ![Movie](images/Movie.PNG) | ![Reviews](images/reviews.PNG) |
+### 📸 Screenshots
+
+![Home](frontend/public/images/Home.PNG)
+![Genre](frontend/public/images/Genre.png)
+![Light Mode](frontend/public/images/Light%20Mode.PNG)
+![Movie](frontend/public/images/Movie.PNG)
+![Reviews](frontend/public/images/reviews.PNG)
+
+
 
 ## 🛠 Tech Stack
 
