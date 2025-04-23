@@ -8,7 +8,9 @@ const app = express()
 const allowedOrigins = process.env.CORS_ORIGIN.split(",");
 
 app.use(cors({
-    origin: ['https://movie-search-ten-taupe.vercel.app', 'https://movie-search-bnwvqg6r2-rkrishnantechies-projects.vercel.app'],
+    origin: ['https://movie-search-ten-taupe.vercel.app', 'https://movie-search-bnwvqg6r2-rkrishnantechies-projects.vercel.app',
+        'https://themoviehunt.vercel.app'
+    ],
     credentials: true
   }));
   

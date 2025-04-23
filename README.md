@@ -64,3 +64,11 @@ npm run dev
 # Start frontend (in a separate terminal)
 cd ../frontend
 npm start
+
+## 💼 Contact
+
+**Radhakrishnan Ramadas**  
+📧 Email: rkrk44321@gmail.com 
+💼 LinkedIn: [linkedin.com/in/radha-krishnan](https://www.linkedin.com/in/radha-krishnan-82a87517a/)
+
+> Feel free to reach out for collaboration, freelance, or job opportunities!
