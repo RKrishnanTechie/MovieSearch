@@ -10,7 +10,7 @@ const ReviewForm = ({ movieId, onReviewAdded }) => {
         e.preventDefault();
     
         try {
-            const response = await axios.post(`http://localhost:8000/reviews/add`, {
+            const response = await axios.post(`https://moviesearch-t67w.onrender.com/reviews/add`, {
                 movieId,
                 comment,
                 rating

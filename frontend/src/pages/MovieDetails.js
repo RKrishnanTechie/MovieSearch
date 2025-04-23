@@ -14,11 +14,11 @@ const MovieDetails = () => {
     useEffect(() => {
         const fetchMovieDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/movies/${id}`, {
+                const response = await axios.get(`https://moviesearch-t67w.onrender.com/movies/${id}`, {
                     withCredentials: true,
                 });
-                console.log('Fetched Movie Details:', response.data.data); // Debugging
-                setMovie({ ...response.data.data, reviews: response.data.data.reviews || [] }); // Ensure reviews is an array
+                // console.log('Fetched Movie Details:', response.data.data); // Debugging
+                setMovie({ ...response.data.data, reviews: response.data.data.reviews || [] }); 
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching movie details:', error);
@@ -28,8 +28,8 @@ const MovieDetails = () => {
 
         const checkIfFavorite = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/favorites`, {
-                    withCredentials: true, // Include credentials to handle authentication
+                const response = await axios.get(`https://moviesearch-t67w.onrender.com/favorites`, {
+                    withCredentials: true, 
                 });
                 const favorites = response.data.data || [];
                 setIsFavorite(favorites.some(favMovie => favMovie.tmdbId === id));
@@ -46,14 +46,14 @@ const MovieDetails = () => {
         try {
             if (isFavorite) {
                 // Remove from favorites
-                await axios.post(`http://localhost:8000/favorites/remove`, { movieId: id }, {
-                    withCredentials: true, // Include credentials to handle authentication
+                await axios.post(`https://moviesearch-t67w.onrender.com/favorites/remove`, { movieId: id }, {
+                    withCredentials: true, 
                 });
                 setIsFavorite(false);
             } else {
                 // Add to favorites
-                await axios.post(`http://localhost:8000/favorites/add`, { movieId: id }, {
-                    withCredentials: true, // Include credentials to handle authentication
+                await axios.post(`https://moviesearch-t67w.onrender.com/favorites/add`, { movieId: id }, {
+                    withCredentials: true, 
                 });
                 setIsFavorite(true);
             }
@@ -63,10 +63,10 @@ const MovieDetails = () => {
     };
 
     const handleReviewAdded = (newReview) => {
-        console.log('Added Review:', newReview); // Debugging
+        // console.log('Added Review:', newReview); // Debugging
         setMovie((prevMovie) => ({
             ...prevMovie,
-            reviews: [newReview, ...prevMovie.reviews], // Ensure the new review is at the top
+            reviews: [newReview, ...prevMovie.reviews], 
         }));
     };
 

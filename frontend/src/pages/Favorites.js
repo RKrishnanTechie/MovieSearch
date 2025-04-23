@@ -8,10 +8,10 @@ const Favorites = () => {
     useEffect(() => {
         const fetchFavorites = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/favorites', {
-                    withCredentials: true, // Include credentials to handle authentication
+                const response = await axios.get('https://moviesearch-t67w.onrender.com/favorites', {
+                    withCredentials: true, 
                 });
-                setFavorites(response.data.data); // Assuming your API response structure
+                setFavorites(response.data.data); 
             } catch (error) {
                 console.error('Error fetching favorite movies:', error);
             }

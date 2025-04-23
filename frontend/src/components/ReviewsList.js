@@ -11,7 +11,7 @@ const ReviewsList = ({ movieId, reviews, onReviewAdded }) => {
 
     const fetchReviews = useCallback(async (pageNumber) => {
         try {
-            const response = await axios.get(`http://localhost:8000/reviews/movie/${movieId}?page=${pageNumber}`);
+            const response = await axios.get(`https://moviesearch-t67w.onrender.com/reviews/movie/${movieId}?page=${pageNumber}`);
             setLocalReviews((prevReviews) => {
                 const newReviews = response.data.data.reviews;
                 const allReviews = [...prevReviews];
@@ -64,7 +64,7 @@ const ReviewsList = ({ movieId, reviews, onReviewAdded }) => {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:8000/reviews/like', { reviewId }, {
+            const response = await axios.post('https://moviesearch-t67w.onrender.com/reviews/like', { reviewId }, {
                 withCredentials: true
             });
             const updatedReview = { ...response.data.data, user: localReviews.find(r => r._id === reviewId).user };
@@ -80,7 +80,7 @@ const ReviewsList = ({ movieId, reviews, onReviewAdded }) => {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:8000/reviews/dislike', { reviewId }, {
+            const response = await axios.post('https://moviesearch-t67w.onrender.com/reviews/dislike', { reviewId }, {
                 withCredentials: true
             });
             const updatedReview = { ...response.data.data, user: localReviews.find(r => r._id === reviewId).user };
@@ -92,7 +92,7 @@ const ReviewsList = ({ movieId, reviews, onReviewAdded }) => {
 
     const handleEdit = async (reviewId, newComment, newRating) => {
         try {
-            const response = await axios.put('http://localhost:8000/reviews/edit', {
+            const response = await axios.put('https://moviesearch-t67w.onrender.com/reviews/edit', {
                 reviewId,
                 comment: newComment,
                 rating: newRating
@@ -107,7 +107,7 @@ const ReviewsList = ({ movieId, reviews, onReviewAdded }) => {
 
     const handleDelete = async (reviewId) => {
         try {
-            await axios.delete('http://localhost:8000/reviews/delete', {
+            await axios.delete('https://moviesearch-t67w.onrender.com/reviews/delete', {
                 data: { reviewId },
                 withCredentials: true
             });

@@ -37,8 +37,8 @@ body {
 }
 
 .navbar-brand i {
-  color: #ff3d00; /* Accent color for the icon */
-  margin-right: 5px; /* Spacing between icon and text */
+  color: #ff3d00; 
+  margin-right: 5px; 
 }
 
 .navbar-brand {
@@ -55,8 +55,7 @@ body {
 /* Existing styles with theme integration */
 .movies-grid {
   display: grid;
-  /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
-  grid-template-columns: repeat(5, 1fr); /* This ensures 5 cards in a row */
+  grid-template-columns: repeat(5, 1fr); 
   gap: 25px;
   padding: 0 60px;
 }

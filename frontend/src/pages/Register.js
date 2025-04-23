@@ -17,7 +17,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8000/users/register', {
+      const response = await axios.post('https://moviesearch-t67w.onrender.com/users/register', {
         fullName,
         email,
         username,
@@ -26,7 +26,7 @@ const Register = () => {
 
       if (response.status === 201) {
         // Automatically log in the user after registration
-        login(response.data.token); //  the backend returns a token upon registration
+        login(response.data.token); 
         navigate('/login'); // Redirect to the login page
       }
     } catch (err) {

@@ -14,7 +14,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8000/users/login', {
+      const response = await axios.post('https://moviesearch-t67w.onrender.com/users/login', {
         username,
         password,
       },{
@@ -23,7 +23,7 @@ const Login = () => {
 
       if (response.status === 200) {
         setError(''); // Clear any previous error message
-        authContext.login(response.data.token, response.data.user); // Use the context login function
+        authContext.login(response.data.token, response.data.user); 
         navigate('/'); // Redirect to home
       }
     } catch (err) {

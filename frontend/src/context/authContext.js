@@ -10,14 +10,14 @@ export const AuthProvider = ({ children, navigate }) => {
   
   const login = (token, userData) => {
     Cookies.set('authToken', token, { expires: 1 });
-    Cookies.set('user', JSON.stringify(userData), { expires: 1 }); // Store user data in cookies
+    Cookies.set('user', JSON.stringify(userData), { expires: 1 }); 
     setIsAuthenticated(true);
     setUser(userData);
   };
 
   const logout = () => {
     Cookies.remove('authToken');
-    Cookies.remove('user'); // Remove user data from cookies
+    Cookies.remove('user'); 
     setIsAuthenticated(false);
     setUser(null);
     navigate('/'); // Redirect to Home after logout

@@ -34,27 +34,33 @@ const Navbar = () => {
     if (e) {
       e.preventDefault();
     }
-
+  
     const finalQuery = searchQuery || query;
-
+  
     if (!isAuthenticated) {
       setError('You need to be logged in to search for movies.');
       return;
     }
-
+  
     setError('');
-
+  
+    const token = localStorage.getItem("token"); // get JWT
+  
     try {
-      await axios.get(`http://localhost:8000/movies/search?query=${finalQuery}`, {
+      await axios.get(`https://moviesearch-t67w.onrender.com/movies/search?query=${finalQuery}`, {
+        // headers: {
+        //   Authorization: `Bearer ${token}`,
+        // },
         withCredentials: true,
       });
-
-      // Redirect to the search results page
+  
       navigate(`/search?query=${finalQuery}`);
     } catch (err) {
       setError('Something went wrong with the search. Please try again.');
+      console.error(err);
     }
   };
+  
 
   const startVoiceSearch = () => {
     if (!('webkitSpeechRecognition' in window)) {
@@ -62,7 +68,7 @@ const Navbar = () => {
       return;
     }
 
-    setListening(true); // Indicate that voice recognition has started
+    setListening(true); 
   
     const recognition = new window.webkitSpeechRecognition();
     recognition.continuous = false;
@@ -77,22 +83,22 @@ const Navbar = () => {
 
       if (!voiceQuery) {
         setError("Voice recognition did not capture a valid query. Please try again.");
-        setListening(false); // Stop indicating listening
+        setListening(false); 
         return;
       }
 
-      setQuery(voiceQuery); // Set the query state with the recognized voice query
-      handleSearch(null, voiceQuery); // Directly pass the recognized voice query to handleSearch
+      setQuery(voiceQuery); 
+      handleSearch(null, voiceQuery); 
     };
   
     recognition.onerror = (event) => {
       setError("Voice recognition error: " + event.error);
-      setListening(false); // Stop indicating listening on error
+      setListening(false); 
     };
   
     recognition.onend = () => {
       console.log("Voice search ended.");
-      setListening(false); // Stop indicating listening when recognition ends
+      setListening(false); 
     };
   };
 

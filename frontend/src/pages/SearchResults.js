@@ -14,7 +14,7 @@ const SearchResults = () => {
     // Fetch genres when component mounts
     const fetchGenres = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/movies/genres', {
+        const response = await axios.get('https://moviesearch-t67w.onrender.com/movies/genres', {
           withCredentials: true,
         });
         setGenres(response.data.data || []);
@@ -37,7 +37,7 @@ const SearchResults = () => {
         try {
           // If a genre is selected, include it in the request
           const response = await axios.get(
-            `http://localhost:8000/movies/search?query=${query || ''}&genreId=${selectedGenre}`, 
+            `https://moviesearch-t67w.onrender.com/movies/search?query=${query || ''}&genreId=${selectedGenre}`, 
             { withCredentials: true }
           );
           setMovies(response.data.data || []);
