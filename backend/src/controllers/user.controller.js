@@ -110,7 +110,8 @@ const loginUser = asyncHandler(async (req, res) =>{
 
     const options = {
         httpOnly: true,
-        secure: false
+  secure: true,         // must be true on HTTPS (Vercel/Render)
+  sameSite: "None"      // allow cross-origin cookies
     }
     return res
     .status(200)
@@ -143,7 +144,8 @@ const logoutUser = asyncHandler(async(req, res) => {
 
     const options = {
         httpOnly: true,
-        secure: true
+        secure: true,         // must be true on HTTPS (Vercel/Render)
+        sameSite: "None"      // allow cross-origin cookies
     }
 
     return res
@@ -179,7 +181,8 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     
         const options = {
             httpOnly: true,
-            secure: true
+            secure: true,         // must be true on HTTPS (Vercel/Render)
+            sameSite: "None"      // allow cross-origin cookies
         }
     
         const {accessToken, newRefreshToken} = await generateAccessAndRefreshTokens(user._id)

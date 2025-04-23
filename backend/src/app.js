@@ -8,16 +8,10 @@ const app = express()
 const allowedOrigins = process.env.CORS_ORIGIN.split(",");
 
 app.use(cors({
-    origin: function (origin, callback) {
-      if (!origin) return callback(null, true); // allow mobile apps/curl
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      } else {
-        return callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: ['https://movie-search-ten-taupe.vercel.app', 'https://movie-search-bnwvqg6r2-rkrishnantechies-projects.vercel.app'],
     credentials: true
   }));
+  
 
 // app.use((req, res, next) => {
 //     res.header('Access-Control-Allow-Origin', process.env.CORS_ORIGIN);
