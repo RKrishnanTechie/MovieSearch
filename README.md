@@ -27,8 +27,8 @@ A responsive and feature-rich movie discovery platform built using the MERN stac
 
 | Home Page | Voice Search | Movie Results |
 |-----------|---------------|----------------|
-| ![Home](./public/images/Home.PNG) | ![Genre](./public/images/Genre.png) | ![Light Mode](./public/images/Light Mode.PNG) |
-| ![Movie](./public/images/Movie.PNG) | ![Reviews](./public/images/reviews.PNG) |
+| ![Home](images/Home.PNG) | ![Genre](images/Genre.png) | ![Light Mode](images/Light%20Mode.PNG) |
+| ![Movie](images/Movie.PNG) | ![Reviews](images/reviews.PNG) |
 
 ## 🛠 Tech Stack
 
@@ -43,6 +43,14 @@ Includes custom routes for authentication, favorites, and reviews
 TMDB API, Postman, GitHub, Vercel (Frontend), Render (Backend)
 
 ---
+## 💼 Contact
+
+**Radhakrishnan Ramadas**  
+📧 Email: rkrk44321@gmail.com 
+💼 LinkedIn: [linkedin.com/in/radha-krishnan](https://www.linkedin.com/in/radha-krishnan-82a87517a/)
+
+> Feel free to reach out for collaboration, freelance, or job opportunities!
+
 
 ## 🚀 Getting Started Locally
 
@@ -72,10 +80,3 @@ npm run dev
 cd ../frontend
 npm start
 
-## 💼 Contact
-
-**Radhakrishnan Ramadas**  
-📧 Email: rkrk44321@gmail.com 
-💼 LinkedIn: [linkedin.com/in/radha-krishnan](https://www.linkedin.com/in/radha-krishnan-82a87517a/)
-
-> Feel free to reach out for collaboration, freelance, or job opportunities!
